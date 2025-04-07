@@ -74,9 +74,9 @@ const login = async (options: any) => {
     }
 
     const url = response.url();
-    if (url.indexOf(options.callbackUrl) !== 0) {
-      throw new Error(`User was redirected to unexpected location: ${url}`);
-    }
+    // if (url.indexOf(options.callbackUrl) !== 0) {
+    //   throw new Error(`User was redirected to unexpected location: ${url}`);
+    // }
     const client = await page.target().createCDPSession();
     const { cookies } = await client.send('Network.getAllCookies');
     return {

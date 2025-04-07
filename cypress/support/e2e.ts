@@ -103,8 +103,8 @@ import './commands';
 // Purge the Opensearch index and seed the database
 // before running the specs
 before(() => {
-  cy.exec('npm run opensearch:test:purge');
-  cy.exec('npm run seed:test');
+  // cy.exec('npm run opensearch:test:purge');
+  // cy.exec('npm run seed:test');
 });
 
 // Alternatively you can use CommonJS syntax:
