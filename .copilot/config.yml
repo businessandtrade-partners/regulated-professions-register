@@ -1,4 +1,4 @@
-repository: public.ecr.aws/regulated-professions-register
+repository: rpr/rpr
 builder:
   name: paketobuildpacks/builder-jammy-full
-  version: 0.3.431
+  version: 0.3.473
