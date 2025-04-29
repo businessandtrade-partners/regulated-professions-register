@@ -1,4 +1,4 @@
 repository: rpr/rpr
 builder:
-  name: paketobuildpacks/builder-jammy-full
-  version: 0.3.473
+  name: paketobuildpacks/builder-jammy-base
+  version: 0.4.398
