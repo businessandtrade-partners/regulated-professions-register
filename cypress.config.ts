@@ -9,6 +9,6 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       return require('./cypress/plugins/index.ts').default(on, config);
     },
-    baseUrl: 'https://staging.regulated-professions.service.gov.uk',
+    baseUrl: 'https://rpr.prod.uktrade.digital',
   },
 });

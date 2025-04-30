@@ -72,8 +72,8 @@ function login(role: string) {
   return cy.task('LoginPuppeteer', {
     username: username,
     password: password,
-    loginUrl: 'https://staging.regulated-professions.service.gov.uk/login',
-    callbackUrl: 'htts://staging.regulated-professions.service.gov.uk/callback',
+    loginUrl: 'https://rpr.prod.uktrade.digital/login',
+    callbackUrl: 'https://rpr.prod.uktrade.digital/callback',
   });
 }
 
