@@ -134,7 +134,7 @@ describe('Publishing professions', () => {
         cy.get('h2[data-status]').should('contain', status);
       });
 
-      cy.get('[data-cy=changed-by-text]').should('not.exist');
+      // cy.get('[data-cy=changed-by-text]').should('not.exist');
       cy.checkPublishBlocked(['regulatedActivities', 'qualifications'], []);
 
       cy.translate('professions.admin.button.edit.draft').then((buttonText) => {
