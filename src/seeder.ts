@@ -29,39 +29,43 @@ import { SearchModule } from './search/search.module';
 import { DecisionDataset } from './decisions/decision-dataset.entity';
 import { DecisionDatasetsSeeder } from './decisions/decision-dataset.seeder';
 
-seeder({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      load: [dbConfiguration],
-    }),
-    TypeOrmModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => ({
-        ...(await configService.get('database')),
+if (process.env.ENVIRONMENT !== 'prod') {
+  seeder({
+    imports: [
+      ConfigModule.forRoot({
+        isGlobal: true,
+        load: [dbConfiguration],
       }),
-    }),
-    TypeOrmModule.forFeature([
-      User,
-      Industry,
-      Qualification,
-      Legislation,
-      OrganisationVersion,
-      Organisation,
-      Profession,
-      ProfessionVersion,
-      ProfessionToOrganisation,
-      DecisionDataset,
-    ]),
-    SearchModule.register(),
-  ],
-  providers: [ProfessionsSearchService, OrganisationsSearchService],
-}).run([
-  IndustriesSeeder,
-  QualificationsSeeder,
-  LegislationsSeeder,
-  OrganisationsSeeder,
-  ProfessionsSeeder,
-  UsersSeeder,
-  DecisionDatasetsSeeder,
-]);
+      TypeOrmModule.forRootAsync({
+        inject: [ConfigService],
+        useFactory: async (configService: ConfigService) => ({
+          ...(await configService.get('database')),
+        }),
+      }),
+      TypeOrmModule.forFeature([
+        User,
+        Industry,
+        Qualification,
+        Legislation,
+        OrganisationVersion,
+        Organisation,
+        Profession,
+        ProfessionVersion,
+        ProfessionToOrganisation,
+        DecisionDataset,
+      ]),
+      SearchModule.register(),
+    ],
+    providers: [ProfessionsSearchService, OrganisationsSearchService],
+  }).run([
+    IndustriesSeeder,
+    QualificationsSeeder,
+    LegislationsSeeder,
+    OrganisationsSeeder,
+    ProfessionsSeeder,
+    UsersSeeder,
+    DecisionDatasetsSeeder,
+  ]);
+} else {
+  console.warn('WARNING: Production environment detected. Ignoring seed request.');
+}
