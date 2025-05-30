@@ -13,8 +13,12 @@ test_db="$app_name-test"
 
 if ! brew bundle check >/dev/null 2>&1; then
   echo "==> Installing Homebrew dependencies…"
-  brew bundle install --verbose --no-lock
+  brew bundle install --verbose
 fi
+
+brew services start postgresql
+
+asdf plugin add nodejs
 
 echo "==> Dropping and recreating the database..."
 
