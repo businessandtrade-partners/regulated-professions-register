@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Resolve DAC_Cookie_Banner_01 accessibility failure
+
 ## [release-042] - 21/05/2025
 
 ### Added
