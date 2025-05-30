@@ -18,6 +18,8 @@ fi
 
 brew services start postgresql
 
+asdf plugin add nodejs
+
 echo "==> Dropping and recreating the database..."
 
 dropdb "$dev_db" > /dev/null 2>&1 || true
