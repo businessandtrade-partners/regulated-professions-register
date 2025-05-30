@@ -5,30 +5,57 @@ need a way to access live environments for debugging or incident management purp
 
 ## Prerequisites
 
-You must have an account that has been invited to the Government Platform as a Service (GPaaS) account. Developers from the product team should be able to invite you. dxw team members can use the credentials stored in 1Password under `GOV.UK PaaS Service Account`.
+You must have an account with the DBT Platform AWS account, and be connected to the DBT VPN in order to connect to the live console. The project members at DBT handle invitations.
 
-You must have have been given 'Space developer' access to the intended space, for example "prod".
+You must have the following utilies installed:
 
-[You can sign in to check your account and permissions here](https://admin.london.cloud.service.gov.uk).
+- AWS CLI
+- copilot
+
+```bash
+$ brew install awscli
+$ brew install copilot
+```
 
 ## Access
 
-1. From a local terminal login to Cloud Foundry and select the intended space
+1. From a local terminal ensure that `~/.aws/config` exists and is populated (example file can be found in KeePass)
 
-   ```bash
-   $ cf login
+   ```properties
+   [sso-session uktrade]
+   sso_start_url = [URL]
+   sso_region = eu-west-2
+   sso_registration_scopes = sso:account:access
+
+   [profile rpr]
+   sso_session = uktrade
+   sso_account_id = [ACCOUNT_ID]
+   sso_role_name = [ROLE_NAME]
+   region = eu-west-2
+   output = json
+
+   [profile rpr-prod]
+   sso_session = uktrade
+   sso_account_id = [ACCOUNT_ID]
+   sso_role_name = [ROLE_NAME]
+   region = eu-west-2
+   output = json
    ```
 
-2. Connect to the environment (in this case production)
+2. Set the AWS profile you wish to you (rpr or rpr-prod)
 
    ```bash
-   $ cf ssh beis-rpr-prod
+   $ export AWS_PROFILE=rpr
    ```
 
-3. CD to the correct location
+3. Login to AWS using SSO; This will prompt a browser window to open to continue authentication.
 
    ```bash
-   $ cd /srv/app
+   $ aws sso login
    ```
 
-4. If you are running NPM commands, use `script/npm`, which adds the `npm` command to the PATH
+4. Connect to desired container; `--env` can be `prod`, `staging`, or `dev`
+
+   ```bash
+   copilot svc exec --app rpr --env dev --name web --command "launcher bash"
+   ```
