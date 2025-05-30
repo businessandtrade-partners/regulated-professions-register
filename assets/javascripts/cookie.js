@@ -61,14 +61,14 @@ var CookieConsent = function () {
   this.hide = function (name) {
     var element = document.getElementById(name);
     if (element) {
-      element.classList.add('govuk-visually-hidden');
+      element.hidden = true;
     }
   };
 
   this.show = function (name) {
     var element = document.getElementById(name);
     if (element) {
-      element.classList.remove('govuk-visually-hidden');
+      element.hidden = false;
     }
   };
 
