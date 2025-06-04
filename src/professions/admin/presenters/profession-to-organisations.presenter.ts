@@ -46,7 +46,9 @@ export class ProfessionToOrganisationsPresenter {
             'professions.form.label.organisations.name',
           ) as string,
           escape(professionToOrganisation.organisation.name),
-          escape(professionToOrganisation.organisation.name),
+          this.i18nService.translate<string>(
+            'professions.form.label.organisations.name',
+          ) as string,
         ),
         this.summaryListItem(
           this.i18nService.translate<string>(
@@ -55,7 +57,9 @@ export class ProfessionToOrganisationsPresenter {
           this.i18nService.translate<string>(
             `organisations.label.roles.${professionToOrganisation.role}`,
           ) as string,
-          escape(professionToOrganisation.organisation.name),
+          this.i18nService.translate<string>(
+            'professions.form.label.organisations.role',
+          ) as string,
         ),
       ],
     };

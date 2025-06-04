@@ -77,7 +77,7 @@ describe('ProfessionToOrganisationsPresenter', () => {
                   {
                     href: `/admin/professions/${profession.id}/versions/${professionVersion.id}/organisations/edit?change=true`,
                     text: translationOf('app.change'),
-                    visuallyHiddenText: escapeOf(organisation1.name),
+                    visuallyHiddenText: translationOf('professions.form.label.organisations.name'),
                   },
                 ],
               },
@@ -98,7 +98,7 @@ describe('ProfessionToOrganisationsPresenter', () => {
                   {
                     href: `/admin/professions/${profession.id}/versions/${professionVersion.id}/organisations/edit?change=true`,
                     text: translationOf('app.change'),
-                    visuallyHiddenText: escapeOf(organisation1.name),
+                    visuallyHiddenText: translationOf('professions.form.label.organisations.role'),
                   },
                 ],
               },
@@ -122,7 +122,7 @@ describe('ProfessionToOrganisationsPresenter', () => {
                   {
                     href: `/admin/professions/${profession.id}/versions/${professionVersion.id}/organisations/edit?change=true`,
                     text: translationOf('app.change'),
-                    visuallyHiddenText: escapeOf(organisation2.name),
+                    visuallyHiddenText: translationOf('professions.form.label.organisations.name'),
                   },
                 ],
               },
@@ -141,7 +141,7 @@ describe('ProfessionToOrganisationsPresenter', () => {
                   {
                     href: `/admin/professions/${profession.id}/versions/${professionVersion.id}/organisations/edit?change=true`,
                     text: translationOf('app.change'),
-                    visuallyHiddenText: escapeOf(organisation2.name),
+                    visuallyHiddenText: translationOf('professions.form.label.organisations.role'),
                   },
                 ],
               },
